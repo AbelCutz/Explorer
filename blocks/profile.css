@@ -15,14 +15,19 @@
 }
 .profile__title {
   font-family: "Inter", Arial, sans-serif;
-  font-style: medium;
+  font-weight: 500;
   font-size: 42px;
-  line-height: 1.2;
+  line-height: 48px;
   color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   margin: 0;
   grid-area: title;
 }
 .profile__description {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -46,6 +51,9 @@
   cursor: pointer;
   grid-area: button;
 }
+.profile__edit-button:hover {
+  opacity: 0.6;
+}
 .profile__add-button {
   background: transparent url(../images/add-button.svg) center no-repeat;
   width: 150px;
@@ -55,10 +63,11 @@
   cursor: pointer;
   margin-left: auto;
 }
-
+.profile__add-button:hover {
+  opacity: 0.6;
+}
 @media screen and (max-width: 480px) {
   .profile {
-    background-color: green;
     flex-direction: column;
   }
   .profile__info {
