@@ -8,10 +8,13 @@
   margin-bottom: 0;
   color: #545454;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .footer__copyright {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 81px;
+    max-width: 282px;
+    font-size: 14px;
+    line-height: 17px;
+    padding-bottom: 0;
+    margin-top: 48px;
+    margin-bottom: 36px;
   }
 }

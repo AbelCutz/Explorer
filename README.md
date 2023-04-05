@@ -30,4 +30,4 @@ This project will create an interactive pages where users can add, remove and li
 # 4 Link to GitHub pages
 
 Project can be reviewed at the following _GitHub_ link.
-[URL] (https://github.com/AbelCutz/se_project_aroundtheus)
+[URL] (https://abelcutz.github.io/Explorer/)
