@@ -1,0 +1,121 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0 0 0 0.5);
+  z-index: 999;
+  display: none;
+}
+.modal_oppend {
+  display: block;
+}
+.modal__container {
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0 0 0 0.15);
+  position: relative;
+  width: 430px;
+  left: 425px;
+  top: 195px;
+  border-radius: 10px;
+}
+.modal__close {
+  position: absolute;
+  background-image: url(../images/Close\ Icon.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  background-color: transparent;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.modal__close:hover {
+  opacity: 0.6px;
+}
+
+.modal__title {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+  padding: 34px 36px 0;
+  margin: 0;
+}
+
+.modal__form {
+  padding: 36px;
+}
+.modal__input {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  margin-top: 30px;
+  padding-bottom: 13px 0;
+  border-bottom: 1px solid #000;
+  opacity: 0.2;
+}
+.modal__input:focus {
+  opacity: 1;
+}
+.modal__button {
+  color: #fff;
+  width: 100%;
+  max-width: 100%;
+  background-color: #000;
+  border-radius: 2px;
+  padding: 13px 0;
+  margin-top: 48px;
+  border: none;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .modal__container {
+    width: 282px;
+    left: calc((100% - 282px) / 2);
+    top: 123px;
+  }
+  .modal__close {
+    bottom: calc(100% + 35px);
+    left: calc(100% - 30px);
+    width: 26px;
+    height: 26px;
+  }
+  .modal__title {
+    margin-top: 25px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .modal__form {
+    width: 238px;
+    padding-left: 22px;
+  }
+  .modal__input {
+    width: 238px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .modal__button {
+    font-style: normal;
+    width: 238px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
