@@ -38,76 +38,19 @@
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
-        <section class="cards page__section">
-          <ul class="card">
-            <li class="card__list">
-              <img
-                src="./images/yosemite-valley.png"
-                alt="yosemite"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Yosemite Valley</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card__list">
-              <img
-                src="./images/lake-louise.png"
-                alt="lake-louise"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lake Louise</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card__list">
-              <img
-                src="./images/bald-mountains.png"
-                alt="bald-mountains"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Bald mountains</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card__list">
-              <img
-                src="./images/latemar.png"
-                alt="latemar"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Latemar</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card__list">
-              <img
-                src="./images/vanoise-national-park.png"
-                alt="vanoise"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Vanoise National Park</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
-            <li class="card__list">
-              <img
-                src="./images/lago-di-braies.png"
-                alt="lago-di"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lago di Braies</h2>
-                <button type="button" class="card__like-button"></button>
-              </div>
-            </li>
+        <div class="cards page__section">
+          <ul class="cards__list">
+            <template id="card">
+              <li class="card">
+                <img src="" alt="" class="card__image" />
+                <div class="card__description">
+                  <h2 class="card__title"></h2>
+                  <button type="button" class="card__like-button"></button>
+                </div>
+              </li>
+            </template>
           </ul>
-        </section>
+        </div>
       </main>
       <footer class="footer page__section">
         <p class="footer__copyright">&copy; 2023 Around The U.S</p>
@@ -115,29 +58,33 @@
     </div>
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal-close-button"></button>
+        <button
+          type="button"
+          class="modal__close"
+          id="modal-close-button"
+        ></button>
         <h2 class="modal__title">Edit Profile</h2>
         <form class="modal__form">
           <input
             type="text"
-            name="Name"
+            name="title"
             class="modal__input"
-            id="Name"
-            placeholder="Jacques Cousteau"
+            id="profile__title-input"
+            placeholder="Name"
             required
           />
           <input
             type="text"
-            name="About_me"
+            name="description"
             class="modal__input"
-            id="About_me"
-            placeholder="Explorer"
+            id="profile__description-input"
+            placeholder="About Me"
             required
           />
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
