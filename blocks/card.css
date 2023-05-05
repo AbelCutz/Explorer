@@ -12,6 +12,7 @@
   object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  cursor: pointer;
 }
 .card__title {
   max-width: 200px;
@@ -42,7 +43,25 @@
   border: none;
   cursor: pointer;
 }
+
+.card__like-button_active {
+  background: transparent url(../images/active-like-button.svg) center no-repeat;
+}
 .card__like-button:hover {
   opacity: 0.5;
   transition: 0.3s linear;
+}
+
+.card__bin-button {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  margin: 18px 15px 0 249px;
+  background: transparent url(../images/bin.svg) center no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.card__bin-button:hover {
+  opacity: 0.5;
 }
