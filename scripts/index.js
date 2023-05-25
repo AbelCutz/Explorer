@@ -57,6 +57,10 @@ const previewImage = document.querySelector(".modal__image");
 const previewCaption = document.querySelector(".modal__caption");
 const previewImageCloseButton =
   previewImageModal.querySelector("#image-modal-close");
+
+const addCardSubmitButton = addCardModal.querySelector(
+  config.submitButtonSelector
+);
 //----------------------- Functions  -------------------------------------
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -109,8 +113,11 @@ function handleAddCardSubmit(evt) {
   const link = cardAddImageInput.value;
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
+  toggleButtonState(
+    [cardAddTitleInput, addCardSubmitButton, cardAddImageInput],
+    config
+  );
   addCardForm.reset();
-  toggleButtonState(inputEls, submitButton, options);
 }
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
