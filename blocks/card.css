@@ -42,10 +42,12 @@
   height: 18px;
   border: none;
   cursor: pointer;
+  transition: 0.3s linear;
 }
 
 .card__like-button_active {
   background: transparent url(../images/active-like-button.svg) center no-repeat;
+  transition: 0.3s linear;
 }
 .card__like-button:hover {
   opacity: 0.5;
@@ -60,8 +62,10 @@
   background: transparent url(../images/bin.svg) center no-repeat;
   border: none;
   cursor: pointer;
+  transition: 0.3s linear;
 }
 
 .card__bin-button:hover {
   opacity: 0.5;
+  transition: 0.3s linear;
 }

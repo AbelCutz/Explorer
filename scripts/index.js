@@ -83,10 +83,14 @@ function getCardElement(data) {
   return cardElement;
 }
 function openModal(modal) {
-  modal.classList.add("modal_opened");
+  modal.classList.add("modal__opened");
+  document.addEventListener("keydown", closeModalByEscape);
+  modal.addEventListener("mousedown", closeModalOnRemoteClick);
 }
 function closeModal(modal) {
-  modal.classList.remove("modal_opened");
+  modal.classList.remove("modal__opened");
+  document.removaEventListener("keydown", closeModalByEscape);
+  modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
 function renderCard(data, cardListEl) {
   const cardElement = getCardElement(data);
@@ -106,6 +110,7 @@ function handleAddCardSubmit(evt) {
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardForm.reset();
+  toggleButtonState(inputEls, submitButton, options);
 }
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
@@ -115,6 +120,25 @@ function openEditProfileModal() {
   fillProfileForm();
   openModal(profileEditModal);
 }
+
+//----------------------- Escape close Modal ----------------------------
+function closeModalByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal__opened");
+    closeModal(openedModal);
+  }
+}
+//----------------------- Closing on the Overlay --------------------------
+
+function closeModalOnRemoteClick(evt) {
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.target);
+  }
+}
+
 //----------------------- Event Listener -----------------------------------
 profileEditButton.addEventListener("click", openEditProfileModal);
 profileModalCloseButton.addEventListener("click", () =>
@@ -128,6 +152,7 @@ addCardModalCloseButton.addEventListener("click", () =>
 previewImageCloseButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
+previewImageModal.addEventListener("mousedown", closeModalOnRemoteClick);
 
 //----------------------- Form Listener-------------------------------------
 profileEditFrom.addEventListener("submit", handleProfileEditSubmit);
