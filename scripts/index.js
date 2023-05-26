@@ -93,7 +93,7 @@ function openModal(modal) {
 }
 function closeModal(modal) {
   modal.classList.remove("modal__opened");
-  document.removaEventListener("keydown", closeModalByEscape);
+  document.removeEventListener("keydown", closeModalByEscape);
   modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
 function renderCard(data, cardListEl) {
@@ -107,17 +107,18 @@ function handleProfileEditSubmit(evt) {
   closeModal(profileEditModal);
 }
 
-function handleAddCardSubmit(evt) {
+function handleAddCardSubmit(evt, submitButton) {
   evt.preventDefault();
   const name = cardAddTitleInput.value;
   const link = cardAddImageInput.value;
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
+  addCardForm.reset();
   toggleButtonState(
-    [cardAddTitleInput, addCardSubmitButton, cardAddImageInput],
+    [cardAddTitleInput, cardAddImageInput],
+    addCardSubmitButton,
     config
   );
-  addCardForm.reset();
 }
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
@@ -159,7 +160,6 @@ addCardModalCloseButton.addEventListener("click", () =>
 previewImageCloseButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
-previewImageModal.addEventListener("mousedown", closeModalOnRemoteClick);
 
 //----------------------- Form Listener-------------------------------------
 profileEditFrom.addEventListener("submit", handleProfileEditSubmit);
