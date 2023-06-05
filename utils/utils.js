@@ -1,10 +1,10 @@
-export function handleOpenModal(modal) {
+export function openModal(modal) {
   modal.classList.add("modal__opened");
   document.addEventListener("keydown", closeModalByEscape);
   modal.addEventListener("mousedown", closeModalOnRemoteClick);
 }
 
-export function handleCloseModal(modal) {
+export function closeModal(modal) {
   modal.classList.remove("modal__opened");
   document.removeEventListener("keydown", closeModalByEscape);
   modal.removeEventListener("mousedown", closeModalOnRemoteClick);
@@ -12,7 +12,7 @@ export function handleCloseModal(modal) {
 export function closeModalByEscape(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal__opened");
-    handleCloseModal(openedModal);
+    closeModal(openedModal);
   }
 }
 
@@ -21,6 +21,6 @@ export function closeModalOnRemoteClick(evt) {
     evt.target === evt.currentTarget ||
     evt.target.classList.contains("modal__close")
   ) {
-    handleCloseModal(evt.target);
+    closeModal(evt.target);
   }
 }
