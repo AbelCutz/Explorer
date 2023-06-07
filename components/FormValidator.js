@@ -37,7 +37,7 @@ export default class FormValidator {
   }
 
   _hasInvalidInput() {
-    return this._inputElements.some(
+    return this._inputElements.every(
       (inputElement) => !inputElement.validity.valid
     );
   }
@@ -51,18 +51,6 @@ export default class FormValidator {
       this._submitButton.disabled = false;
     }
   }
-
-  // _toggleButtonState() {
-  //   const isValid = this._inputElements.every(
-  //     (inputElement) => inputElement.validity.valid
-  //   );
-
-  //   this._submitButton.disabled = !isValid;
-  //   this._submitButton.classList.toggle(
-  //     this._settings.inactiveButtonClass,
-  //     !isValid
-  //   );
-  // }
 
   _setEventListeners() {
     this._inputElements.forEach((inputElement) => {
