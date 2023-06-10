@@ -62,7 +62,6 @@ function fillProfileForm() {
 function openEditProfileModal() {
   fillProfileForm();
   openModal(profileEditModal);
-  // profileEditFrom.reset();
 }
 
 //----------------------- Event Listener -----------------------------------
