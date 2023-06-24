@@ -24,6 +24,22 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+export const profileEditModal = document.querySelector("#profile-edit-modal");
+export const profileAddModal = document.querySelector("#add-card-modal");
+export const profileEditButton = document.querySelector("#profile-edit-button");
+export const profileAddButton = document.querySelector("#profile-add-button");
+export const profileTitle = document.querySelector(".profile__title");
+export const profileDescription = document.querySelector(
+  ".profile__description"
+);
+export const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
+export const profileTitleInput = document.querySelector("#profile-title-input");
+export const cardListEl = document.querySelector(".cards__list");
+export const previewImageModal = document.querySelector(".modal_type_preview");
+export const inputSelector = ".modal__input";
+
 export const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

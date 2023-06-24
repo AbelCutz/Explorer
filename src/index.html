@@ -9,21 +9,20 @@
     <meta name="keywords" content="travel, explor, adventure " />
     <meta name="author" content="Abel cutz" />
     <link rel="web icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
           class="header__log"
-          src="./images/around.svg"
+          src="<%=require('./images/around.svg')%>"
           alt="around the u.s log"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="Avatar"
             class="profile__image"
           />
@@ -132,7 +131,7 @@
         </form>
       </div>
     </div>
-    <div class="modal" id="preview-modal">
+    <div class="modal modal_type_preview">
       <div class="modal__container modal__container_type_preview">
         <button
           type="button"
@@ -143,6 +142,5 @@
         <p class="modal__caption">Caption</p>
       </div>
     </div>
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
