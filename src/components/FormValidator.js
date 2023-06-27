@@ -1,13 +1,11 @@
 export default class FormValidator {
-  constructor(settings, formElement) {
+  constructor(settings, formElement, inputSelector) {
     this._settings = settings;
-    this._formElement = formElement;
-    this._inputElements = Array.from(
-      this._formElement.querySelectorAll(this._settings.inputSelector)
-    );
-    this._submitButton = this._formElement.querySelector(
-      this._settings.submitButtonSelector
-    );
+    this._inputSelector = inputSelector;
+    this._form = formElement;
+    this._buttonElement = this._form.querySelector(this._submitButtonSelector);
+
+    this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
   }
 
   _showInputError(inputElement) {
@@ -60,7 +58,7 @@ export default class FormValidator {
       });
     });
 
-    this._formElement.addEventListener("submit", (evt) => {
+    this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
   }

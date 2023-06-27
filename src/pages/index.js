@@ -30,19 +30,20 @@ const userInfo = new UserInfo({
 
 const editProfileFormValidator = new FormValidator(
   validationSettings,
-  profileEditModal
+  document.querySelector(profileEditModal),
+  inputSelector
 );
 editProfileFormValidator.enableValidation();
 
 const addCardFormValidator = new FormValidator(
   validationSettings,
-  profileAddModal
+  document.querySelector(profileAddModal),
+  inputSelector
 );
 addCardFormValidator.enableValidation();
 
-const popupSelector = "#image-modal";
-const popupWithImage = new PopupWithImage(popupSelector);
-const popupWithForm = new PopupWithForm("#form-modal");
+const popupWithImage = new PopupWithImage(".modal__image");
+const popupWithForm = new PopupWithForm(".modal__form");
 
 const handleCardClick = (cardData) => {
   popupWithImage.open(cardData);
