@@ -24,17 +24,6 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-export const profileEditModal = "#profile-edit-modal";
-export const profileAddModal = "#add-card-modal";
-export const profileEditButton = "#profile-edit-button";
-export const profileAddButton = "#profile-add-button";
-export const profileTitle = ".profile__title";
-export const profileDescription = ".profile__description";
-export const profileDescriptionInput = "#profile-description-input";
-export const profileTitleInput = "#profile-title-input";
-export const cardListEl = ".cards__list";
-export const previewImageModal = ".modal_type_preview";
-export const inputSelector = ".modal__input";
 
 export const validationSettings = {
   formSelector: ".modal__form",

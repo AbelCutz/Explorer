@@ -1,26 +1,22 @@
 export default class FormValidator {
-  constructor(settings, formElement, inputSelector) {
+  constructor(settings, formElement, inputSelector, submitButtonSelector) {
     this._settings = settings;
     this._inputSelector = inputSelector;
     this._form = formElement;
+    this._submitButtonSelector = ".modal__button";
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
-
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
   }
 
   _showInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(
-      `#${inputElement.id}-error`
-    );
+    const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._settings.inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._settings.errorClass);
   }
 
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(
-      `#${inputElement.id}-error`
-    );
+    const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._settings.inputErrorClass);
     errorElement.textContent = "";
     errorElement.classList.remove(this._settings.errorClass);
@@ -35,18 +31,18 @@ export default class FormValidator {
   }
 
   _hasInvalidInput() {
-    return this._inputElements.every(
+    return this._inputElements.some(
       (inputElement) => !inputElement.validity.valid
     );
   }
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._submitButton.classList.add(this._settings.inactiveButtonClass);
-      this._submitButton.disabled = true;
+      this._buttonElement.classList.add(this._settings.inactiveButtonClass);
+      this._buttonElement.disabled = true;
     } else {
-      this._submitButton.classList.remove(this._settings.inactiveButtonClass);
-      this._submitButton.disabled = false;
+      this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
+      this._buttonElement.disabled = false;
     }
   }
 
