@@ -29,6 +29,7 @@ const editFormValidator = new FormValidator(
 const addFormValidator = new FormValidator(validationSettings, profileAddModal);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
 const editProfileFormValidator = new FormValidator(
   validationSettings,
   profileEditModal,
@@ -56,15 +57,14 @@ const editProfilePopup = new PopupWithForm(
   }
 );
 
-profileEditButton.addEventListener("click", openProfilePopup);
+profileEditButton.addEventListener("click", () => {
+  const userData = userInfo.getUserInfo();
 
-function openProfilePopup() {
-  const { name, job } = userInfo.getUserInfo();
-  profileTitleInput.value = name;
-  profileDescriptionInput.value = job;
-  editFormValidator.toggleButtonState();
+  profileDescription.value = userData.name;
+  profileTitle.value = userData.job;
   editProfilePopup.open();
-}
+  editFormValidator.resetValidation();
+});
 
 editProfilePopup.setEventListeners();
 
