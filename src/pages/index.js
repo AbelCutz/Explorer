@@ -6,22 +6,21 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import { initialCards, validationSettings } from "../utils/constants.js";
+import {
+  profileEditModal,
+  profileAddModal,
+  profileEditButton,
+  profileAddButton,
+  profileTitle,
+  profileDescription,
+  cardListEl,
+  inputSelector,
+  initialCards,
+  validationSettings,
+} from "../utils/constants.js";
 import Card from "../components/Card.js";
 
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileAddModal = document.querySelector("#add-card-modal");
-const profileEditButton = document.querySelector("#profile-edit-button");
-const profileAddButton = document.querySelector("#profile-add-button");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
-const profileTitleInput = document.querySelector("#profile-title-input");
-const cardListEl = ".cards__list";
-const previewImageModal = document.querySelector(".modal_type_preview");
-const inputSelector = ".modal__input";
+//-------------------------------- Form Validator ----------------------------
 const editFormValidator = new FormValidator(
   validationSettings,
   profileEditModal
@@ -44,10 +43,14 @@ const addCardFormValidator = new FormValidator(
 );
 addCardFormValidator.enableValidation();
 
+//-------------------------------- UserSection ----------------------------
+
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
 });
+
+//-------------------------------- EditProfile -----------------------------
 
 const editProfilePopup = new PopupWithForm(
   "#profile-edit-modal",
@@ -68,6 +71,22 @@ profileEditButton.addEventListener("click", () => {
 
 editProfilePopup.setEventListeners();
 
+//-------------------------------- AddCard ----------------------------
+
+const newCardPopup = new PopupWithForm("#add-card-modal", submitCard);
+newCardPopup.setEventListeners();
+profileAddButton.addEventListener("click", () => {
+  addCardFormValidator.resetValidation();
+  newCardPopup.open();
+});
+
+//-------------------------------- PreviwImage ----------------------------
+
+const previewImagePopup = new PopupWithImage(".modal_type_preview");
+previewImagePopup.setEventListeners();
+
+//-------------------------------- Section  ----------------------------
+
 const cardListSection = new Section(
   {
     items: initialCards,
@@ -81,8 +100,7 @@ const cardListSection = new Section(
 
 cardListSection.renderItems();
 
-const previewImagePopup = new PopupWithImage(".modal_type_preview");
-previewImagePopup.setEventListeners();
+//-------------------------------- Card Functions -----------------------------
 
 function createCard({ name, link }) {
   const cardElement = new Card(
@@ -106,11 +124,3 @@ function submitCard({ title, url }) {
   cardListSection.prependItem(newCard);
   newCardPopup.close();
 }
-
-const newCardPopup = new PopupWithForm("#add-card-modal", submitCard);
-newCardPopup.setEventListeners();
-
-profileAddButton.addEventListener("click", () => {
-  addCardFormValidator.resetValidation();
-  newCardPopup.open();
-});
