@@ -62,11 +62,10 @@ const editProfilePopup = new PopupWithForm(
 
 profileEditButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-
-  profileDescription.value = userData.name;
   profileTitle.value = userData.job;
-  editProfilePopup.open();
+  profileDescription.value = userData.name;
   editFormValidator.resetValidation();
+  editProfilePopup.open();
 });
 
 editProfilePopup.setEventListeners();
@@ -118,8 +117,8 @@ function createCard({ name, link }) {
   return generatedCard;
 }
 
-function submitCard({ title, url }) {
-  const newCardData = { name: title, link: url };
+function submitCard({ title, link }) {
+  const newCardData = { name: title, link: link };
   const newCard = createCard(newCardData);
   cardListSection.prependItem(newCard);
   newCardPopup.close();

@@ -32,6 +32,8 @@ export const profileTitle = document.querySelector(".profile__title");
 export const profileDescription = document.querySelector(
   ".profile__description"
 );
+export const profileDescriptionInput = "#profile-description-input";
+export const profileTitleInput = "#profile-title-input";
 export const cardListEl = ".cards__list";
 export const inputSelector = ".modal__input";
 export const validationSettings = {
