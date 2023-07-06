@@ -3,7 +3,7 @@ export default class FormValidator {
     this._settings = settings;
     this._inputSelector = inputSelector;
     this._form = formElement;
-    this._submitButtonSelector = ".modal__button";
+    this._submitButtonSelector = settings.submitButtonSelector;
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
   }

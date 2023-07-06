@@ -62,8 +62,9 @@ const editProfilePopup = new PopupWithForm(
 
 profileEditButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-  profileTitle.value = userData.job;
-  profileDescription.value = userData.name;
+
+  profileTitle.value = userData.name;
+  profileDescription.value = userData.job;
   editFormValidator.resetValidation();
   editProfilePopup.open();
 });
@@ -109,12 +110,9 @@ function createCard({ name, link }) {
       previewImagePopup.open({ name, link });
     }
   );
-  const generatedCard = cardElement.generateCard();
-  const cardImage = generatedCard.querySelector(".card__image");
-  cardImage.addEventListener("click", () => {
-    previewImagePopup.open({ name, link });
-  });
-  return generatedCard;
+
+  const generateCard = cardElement.generateCard();
+  return generateCard;
 }
 
 function submitCard({ title, link }) {
