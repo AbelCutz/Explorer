@@ -13,6 +13,8 @@ import {
   profileAddButton,
   profileTitle,
   profileDescription,
+  profileTitleInput,
+  profileDescriptionInput,
   cardListEl,
   inputSelector,
   initialCards,
@@ -63,8 +65,8 @@ const editProfilePopup = new PopupWithForm(
 profileEditButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
 
-  profileTitle.value = userData.name;
-  profileDescription.value = userData.job;
+  profileTitleInput.value = userData.name;
+  profileDescriptionInput.value = userData.job;
   editFormValidator.resetValidation();
   editProfilePopup.open();
 });
