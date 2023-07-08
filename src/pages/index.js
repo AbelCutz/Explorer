@@ -11,8 +11,6 @@ import {
   profileAddModal,
   profileEditButton,
   profileAddButton,
-  profileTitle,
-  profileDescription,
   profileTitleInput,
   profileDescriptionInput,
   cardListEl,
@@ -23,13 +21,6 @@ import {
 import Card from "../components/Card.js";
 
 //-------------------------------- Form Validator ----------------------------
-const editFormValidator = new FormValidator(
-  validationSettings,
-  profileEditModal
-);
-const addFormValidator = new FormValidator(validationSettings, profileAddModal);
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
 
 const editProfileFormValidator = new FormValidator(
   validationSettings,
@@ -67,7 +58,7 @@ profileEditButton.addEventListener("click", () => {
 
   profileTitleInput.value = userData.name;
   profileDescriptionInput.value = userData.job;
-  editFormValidator.resetValidation();
+  editProfileFormValidator.resetValidation();
   editProfilePopup.open();
 });
 
