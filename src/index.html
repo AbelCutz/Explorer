@@ -20,11 +20,18 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Avatar"
+              class="profile__image"
+            />
+            <button
+              type=" button"
+              class="profile__avatar-button"
+              id="avatar-edit-button"
+            ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -59,6 +66,7 @@
         <p class="footer__copyright">&copy; 2023 Around The U.S</p>
       </footer>
     </div>
+    <!------------------------------------------Edit profile ------------------------>
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -97,6 +105,7 @@
         </form>
       </div>
     </div>
+    <!------------------------------Add card modal ----------------------->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button
@@ -130,6 +139,48 @@
         </form>
       </div>
     </div>
+    <!-------------------------Delete modal -------------------------------->
+    <div class="modal" id="delete-confirmation-modal">
+      <div class="modal__content">
+        <h2 class="modal__delete">Are you sure?</h2>
+        <form class="modal__form" id="delete-modal">
+          <fieldset class="modal__fieldset">
+            <button
+              class="modal__button"
+              type="button"
+              id="confirm-delete-button"
+              type="submit"
+            >
+              Yes
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!------------------------------Change profile image ----------------->
+    <div class="modal modal_input_modal" id="profile-change-image">
+      <div class="modal__content">
+        <button class="modal__close" id="add-closed-button"></button>
+        <h2 class="modal__edit">Change profile picture</h2>
+        <form class="modal__form" id="profile-change-form">
+          <input
+            class="modal__input"
+            id="profile-image-link"
+            type="url"
+            name="link"
+            placeholder="image link"
+            required
+          />
+          <span class="modal__error" id="profile-image-link-error"
+            >Please enter a link</span
+          >
+          <button type="submit" class="modal__button" id="modal-avatar-edit">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!------------------------modal preview ----------------------------------->
     <div class="modal modal_type_preview">
       <div class="modal__container modal__container_type_preview">
         <button
