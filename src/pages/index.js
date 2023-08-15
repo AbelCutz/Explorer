@@ -11,6 +11,8 @@ import {
   profileEditModal,
   profileAddModal,
   profileEditButton,
+  avatarEditButton,
+  avatarAddModal,
   profileAddButton,
   profileTitleInput,
   profileDescriptionInput,
@@ -69,13 +71,22 @@ function createCard(cardData) {
   const card = new Card({
     data: cardData,
     cardSelector: "#card-template",
-    currentUserId: currentUserId,
-    handleCardImageClick,
+    previewImage: handleCardImageClick,
     myUserId: currentUserId,
-    handleLikeBtn: (cardId) => {
-      if (card.isLiked()) {
+    handleDeleteCard: handleCardDelete,
+    handleLikes: (isLiked) => {
+      if (!isLiked) {
         api
-          .removeLike(cardId)
+          .addLike(cardData._Id)
+          .then((data) => {
+            card.updateLikes(data.likes);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        api
+          .removeLike(cardData._Id)
           .then((data) => {
             card.updateLikes(data.likes);
           })
@@ -83,9 +94,6 @@ function createCard(cardData) {
             console.log(err);
           });
       }
-    },
-    handleCardDelete: (cardId) => {
-      handleDeleteConfirmation(card, cardId);
     },
   });
 
@@ -144,10 +152,10 @@ function handleDeleteConfirmation(card, cardId) {
 }
 
 function handleCardDelete(cardId) {
-  deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
     handleDeleteConfirmation(cardId);
   });
+  deleteCardPopup.open();
 }
 
 //------------------------------- Avatar -----------------------------------------
@@ -160,7 +168,7 @@ function handleAvatarFormSubmit({ avatarUrl }) {
       avatarProfilePopup.close();
     })
     .catch((err) => {
-      console.err(err);
+      console.error(err);
     })
     .finally(() => {
       avatarProfilePopup.renderLoading(false);
@@ -187,6 +195,13 @@ const addCardFormValidator = new FormValidator(
 );
 addCardFormValidator.enableValidation();
 
+const avatarFormValidator = new FormValidator(
+  validationSettings,
+  avatarAddModal,
+  inputSelector
+);
+avatarFormValidator.enableValidation();
+
 const editProfilePopup = new PopupWithForm(
   "#profile-edit-modal",
   handleEditProfileFormSubmit
@@ -210,11 +225,11 @@ profileAddButton.addEventListener("click", () => {
 });
 
 const avatarProfilePopup = new PopupWithForm(
-  "#avatar-edit-modal",
+  "#profile-change-image",
   handleAvatarFormSubmit
 );
 avatarProfilePopup.setEventListeners();
-avatarProfileButton.addEventListener("click", () => {
+avatarEditButton.addEventListener("click", () => {
   avatarFormValidator.resetValidation();
   avatarProfilePopup.open();
 });

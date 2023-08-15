@@ -28,6 +28,8 @@ export const profileEditModal = document.querySelector("#profile-edit-modal");
 export const profileAddModal = document.querySelector("#add-card-modal");
 export const profileEditButton = document.querySelector("#profile-edit-button");
 export const profileAddButton = document.querySelector("#profile-add-button");
+export const avatarEditButton = document.querySelector("#avatar-edit-button");
+export const avatarAddModal = document.querySelector("#profile-change-form");
 export const profileTitle = document.querySelector(".profile__title");
 export const profileDescription = document.querySelector(
   ".profile__description"
@@ -40,6 +42,7 @@ export const profileTitleInput = document.querySelector(
 );
 export const cardListEl = ".cards__list";
 export const inputSelector = ".modal__input";
+
 export const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
