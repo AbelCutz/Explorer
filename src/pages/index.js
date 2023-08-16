@@ -118,17 +118,17 @@ function handleEditProfileFormSubmit({ title, description }) {
 function HandleNewCardSubmit({ title, link }) {
   newCardPopup.renderLoading(true);
   api
-    .addCard(title, link)
+    .addCard({ name: title, link: link })
     .then((cardData) => {
-      const newCard = renderItems(cardData);
-      section.prependItem(newCard);
+      const newCard = createCard(cardData);
+      section.addItem(newCard);
       newCardPopup.close();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      addCardPopup.renderLoading(false);
+      newCardPopup.renderLoading(false);
     });
 }
 // ------------- delete card ----------------------

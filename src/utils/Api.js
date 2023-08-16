@@ -41,11 +41,11 @@ export default class Api {
       body: JSON.stringify({ avatar: avatarData }),
     }).then(this._checkResponse);
   }
-  addCard({ name, link }) {
+  addCard({ name: title, link: link }) {
     return fetch(this._baseUrl + "/cards", {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({ name: title, link }),
     }).then(this._checkResponse);
   }
 
