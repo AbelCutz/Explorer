@@ -29,23 +29,23 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name,
-        about,
+        name: name,
+        about: about,
       }),
     }).then(this._checkResponse);
   }
-  avatarUser(avatarData) {
+  avatarUser(avatar) {
     return fetch(this._baseUrl + "/users/me/avatar", {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({ avatar: avatarData }),
+      body: JSON.stringify({ avatar }),
     }).then(this._checkResponse);
   }
-  addCard({ name: title, link: link }) {
+  addCard(name, link) {
     return fetch(this._baseUrl + "/cards", {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ name: title, link }),
+      body: JSON.stringify({ name, link }),
     }).then(this._checkResponse);
   }
 
@@ -55,7 +55,7 @@ export default class Api {
       headers: this._headers,
     }).then(this._checkResponse);
   }
-  likeCardStatus(cardId) {
+  removeLikes(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,

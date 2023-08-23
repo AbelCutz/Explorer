@@ -63,7 +63,7 @@ export default class Card {
       this._handleDeleteCard(this._id);
     });
     this.cardImage.addEventListener("click", () => {
-      this._handleCardImageClick();
+      this._handleCardImageClick({ name: this._name, link: this._link });
     });
   }
   generateCard() {

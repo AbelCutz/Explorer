@@ -42,7 +42,6 @@
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-  /* margin-right: 24px; */
 }
 .profile__edit-button {
   background: transparent url(../images/edit-button.svg) center no-repeat;

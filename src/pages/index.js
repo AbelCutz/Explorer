@@ -49,7 +49,7 @@ api
   .getInfo()
   .then(([userData, initialCards]) => {
     currentUserId = userData._id;
-    userInfo.setUserInfo({ name: userData.name, job: userData.about });
+    userInfo.setUserInfo({ title: userData.name, job: userData.about });
     userInfo.setAvatarInfo(userData.avatar);
     section = new Section(
       {
@@ -77,7 +77,7 @@ function createCard(cardData) {
     handleLikes: (isLiked) => {
       if (!isLiked) {
         api
-          .addLike(cardData._Id)
+          .addLikes(cardData._id)
           .then((data) => {
             card.updateLikes(data.likes);
           })
@@ -86,7 +86,7 @@ function createCard(cardData) {
           });
       } else {
         api
-          .removeLike(cardData._Id)
+          .removeLikes(cardData._id)
           .then((data) => {
             card.updateLikes(data.likes);
           })
@@ -118,7 +118,7 @@ function handleEditProfileFormSubmit({ title, description }) {
 function HandleNewCardSubmit({ title, link }) {
   newCardPopup.renderLoading(true);
   api
-    .addCard({ name: title, link: link })
+    .addCard(title, link)
     .then((cardData) => {
       const newCard = createCard(cardData);
       section.addItem(newCard);
@@ -132,14 +132,14 @@ function HandleNewCardSubmit({ title, link }) {
     });
 }
 // ------------- delete card ----------------------
-function handleDeleteConfirmation(card, cardId) {
+function handleDeleteConfirmation(cardId) {
   deleteCardPopup.open();
-  deleteCardPopup.SetSubmitAction(() => {
+  deleteCardPopup.setSubmitAction(() => {
     deleteCardPopup.renderLoading(true);
     api
       .deleteCard(cardId)
       .then(() => {
-        card.deleteConfirmClick();
+        cardId.handleCardDelete();
         deleteCardPopup.close();
       })
       .catch((err) => {
@@ -159,10 +159,10 @@ function handleCardDelete(cardId) {
 }
 
 //------------------------------- Avatar -----------------------------------------
-function handleAvatarFormSubmit({ avatarUrl }) {
+function handleAvatarFormSubmit({ link }) {
   avatarProfilePopup.renderLoading(true);
   api
-    .avatarUser(avatarUrl)
+    .avatarUser(link)
     .then((userData) => {
       userInfo.setAvatarInfo(userData.avatar);
       avatarProfilePopup.close();
@@ -213,7 +213,6 @@ profileEditButton.addEventListener("click", () => {
   editProfileFormValidator.resetValidation();
   editProfilePopup.open();
 });
-
 editProfilePopup.setEventListeners();
 
 const newCardPopup = new PopupWithForm("#add-card-modal", HandleNewCardSubmit);

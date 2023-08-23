@@ -33,13 +33,13 @@
             ></button>
           </div>
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               type="button"
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <h2 class="profile__description">Explorer</h2>
+            <h2 class="profile__description"></h2>
           </div>
           <button
             type="button"
@@ -142,27 +142,29 @@
     </div>
     <!-------------------------Delete modal -------------------------------->
     <div class="modal" id="delete-confirmation-modal">
-      <div class="modal__content">
-        <h2 class="modal__delete">Are you sure?</h2>
-        <form class="modal__form" id="delete-modal">
-          <fieldset class="modal__fieldset">
-            <button
-              class="modal__button"
-              type="button"
-              id="confirm-delete-button"
-              type="submit"
-            >
-              Yes
-            </button>
-          </fieldset>
+      <div class="modal__container modal__container_delete">
+        <button
+          type="button"
+          class="modal__close"
+          id="delete-card-close-button"
+        ></button>
+        <h2 class="modal__title">Are you sure?</h2>
+        <form class="modal__form" id="delete-form">
+          <button type="submit" class="modal__button modal__button_delete">
+            Yes
+          </button>
         </form>
       </div>
     </div>
     <!------------------------------Change profile image ----------------->
-    <div class="modal modal_input_modal" id="profile-change-image">
-      <div class="modal__content">
-        <button class="modal__close" id="add-closed-button"></button>
-        <h2 class="modal__edit">Change profile picture</h2>
+    <div class="modal" id="profile-change-image">
+      <div class="modal__container modal__container_change_image">
+        <button
+          type="button"
+          class="modal__close"
+          id="change-picture-close-button"
+        ></button>
+        <h2 class="modal__title">Change profile picture</h2>
         <form class="modal__form" id="profile-change-form">
           <input
             class="modal__input"
@@ -175,7 +177,11 @@
           <span class="modal__error" id="profile-image-link-error"
             >Please enter a link</span
           >
-          <button type="submit" class="modal__button" id="profle-edit-button">
+          <button
+            type="submit"
+            class="modal__button modal__button_change_image"
+            id="profle-change-button"
+          >
             Save
           </button>
         </form>
