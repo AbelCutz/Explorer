@@ -18,7 +18,6 @@ import {
   profileDescriptionInput,
   cardListEl,
   inputSelector,
-  initialCards,
   validationSettings,
 } from "../utils/constants.js";
 import Card from "../components/Card.js";
@@ -41,7 +40,7 @@ const api = new Api({
   },
 });
 
-// //-------------------------------- Card Function -------------------------------------
+// //-------------------------------- Card Function ----------------------------
 let currentUserId;
 let section;
 
@@ -99,7 +98,7 @@ function createCard(cardData) {
 
   return card.generateCard();
 }
-
+//---------------------------------- Submit functions ---------------------------------
 function handleEditProfileFormSubmit({ title, description }) {
   editProfilePopup.renderLoading(true);
   api
@@ -131,15 +130,15 @@ function HandleNewCardSubmit({ title, link }) {
       newCardPopup.renderLoading(false);
     });
 }
-// ------------- delete card ----------------------
-function handleDeleteConfirmation(cardId) {
+// ------------- delete card function ---------------------
+function handleCardDelete(cardId) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
     deleteCardPopup.renderLoading(true);
     api
       .deleteCard(cardId)
       .then(() => {
-        cardId.handleCardDelete();
+        this.deleteClick();
         deleteCardPopup.close();
       })
       .catch((err) => {
@@ -151,14 +150,7 @@ function handleDeleteConfirmation(cardId) {
   });
 }
 
-function handleCardDelete(cardId) {
-  deleteCardPopup.setSubmitAction(() => {
-    handleDeleteConfirmation(cardId);
-  });
-  deleteCardPopup.open();
-}
-
-//------------------------------- Avatar -----------------------------------------
+//------------------------------- Avatar  -----------------------------------------
 function handleAvatarFormSubmit({ link }) {
   avatarProfilePopup.renderLoading(true);
   api
@@ -202,6 +194,8 @@ const avatarFormValidator = new FormValidator(
 );
 avatarFormValidator.enableValidation();
 
+//------------------------------ instants -------------------------------------------
+
 const editProfilePopup = new PopupWithForm(
   "#profile-edit-modal",
   handleEditProfileFormSubmit
@@ -232,10 +226,7 @@ avatarEditButton.addEventListener("click", () => {
   avatarFormValidator.resetValidation();
   avatarProfilePopup.open();
 });
-const deleteCardPopup = new PopupWithConfirm(
-  "#delete-confirmation-modal",
-  handleCardDelete
-);
+const deleteCardPopup = new PopupWithConfirm("#delete-confirmation-modal");
 deleteCardPopup.setEventListeners();
 
 const previewImagePopup = new PopupWithImage(".modal_type_preview");

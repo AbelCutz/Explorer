@@ -124,9 +124,6 @@
 .modal__button_delete {
   margin: auto;
 }
-/* .modal__button_change_image {
-  margin: auto;
-} */
 .modal__input_type_error {
   border-bottom: 1px solid #ff0000;
 }

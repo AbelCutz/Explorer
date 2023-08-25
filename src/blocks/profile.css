@@ -141,4 +141,15 @@
     margin: 0;
     width: 100%;
   }
+  .profile__avatar-container {
+    margin-right: 12px;
+  }
+  .profile__avatar-button {
+    background-size: 20px;
+    height: 80px;
+    width: 80px;
+    top: 28%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+  }
 }
