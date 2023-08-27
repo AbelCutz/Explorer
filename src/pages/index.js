@@ -120,7 +120,7 @@ function HandleNewCardSubmit({ title, link }) {
     .addCard(title, link)
     .then((cardData) => {
       const newCard = createCard(cardData);
-      section.addItem(newCard);
+      section.prependItem(newCard);
       newCardPopup.close();
     })
     .catch((err) => {
@@ -138,7 +138,7 @@ function handleCardDelete(cardId) {
     api
       .deleteCard(cardId)
       .then(() => {
-        this.deleteClick();
+        this.deleteCard();
         deleteCardPopup.close();
       })
       .catch((err) => {

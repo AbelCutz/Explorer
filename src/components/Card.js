@@ -23,11 +23,10 @@ export default class Card {
     const cardElement = document
       .querySelector(this._cardSelector)
       .content.firstElementChild.cloneNode(true);
-    this._cardLikes = cardElement.querySelector(".card__likes-amount");
     return cardElement;
   }
 
-  deleteClick() {
+  deleteCard() {
     this._element.remove();
   }
   _checkIdForDelete() {
