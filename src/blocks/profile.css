@@ -42,7 +42,6 @@
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-  margin-right: 24px;
 }
 .profile__edit-button {
   background: transparent url(../images/edit-button.svg) center no-repeat;
@@ -69,6 +68,28 @@
 .profile__add-button:hover {
   opacity: 0.6;
   transition: 0.3s linear;
+}
+
+.profile__avatar-container {
+  position: relative;
+  margin-right: 24px;
+}
+.profile__avatar-button {
+  background-color: #000;
+  border-style: none;
+  cursor: pointer;
+  background: transparent url(../images/edit-button.svg) center no-repeat;
+  opacity: 0;
+  background-size: 26px;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  left: 0;
+  border-radius: 50%;
+}
+
+.profile__avatar-button:hover {
+  opacity: 0.6;
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .profile {
@@ -119,5 +140,16 @@
     max-width: 282px;
     margin: 0;
     width: 100%;
+  }
+  .profile__avatar-container {
+    margin-right: 12px;
+  }
+  .profile__avatar-button {
+    background-size: 20px;
+    height: 80px;
+    width: 80px;
+    top: 28%;
+    left: 49%;
+    transform: translate(-50%, -50%);
   }
 }

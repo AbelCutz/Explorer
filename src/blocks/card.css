@@ -35,16 +35,33 @@
   justify-content: space-between;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  position: relative;
 }
 .card__like-button {
   background: transparent url(../images/like-button.svg) center no-repeat;
   width: 21px;
-  height: 18px;
+  height: 19px;
   border: none;
   cursor: pointer;
+  position: absolute;
+  bottom: 45px;
+  right: 20px;
   transition: 0.3s linear;
 }
-
+.card__like-amount {
+  position: relative;
+  width: 9px;
+  height: 13px;
+  top: 2px;
+  right: 1px;
+  font-family: "Inter", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+}
 .card__like-button_active {
   background: transparent url(../images/active-like-button.svg) center no-repeat;
   transition: 0.3s linear;

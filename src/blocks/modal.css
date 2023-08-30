@@ -24,6 +24,11 @@
   width: 430px;
   border-radius: 10px;
 }
+.modal__container_change_image {
+  height: 272px;
+  padding-bottom: 13px;
+}
+
 .modal__close {
   position: absolute;
   background-image: url(../images/Close\ Icon.png);
@@ -94,7 +99,6 @@
   cursor: pointer;
   transition: 0.3s linear;
 }
-
 .modal__button:hover {
   opacity: 0.8;
   transition: 0.3s linear;
@@ -116,6 +120,9 @@
   width: auto;
   max-width: 75vw;
   max-height: 55vw;
+}
+.modal__button_delete {
+  margin: auto;
 }
 .modal__input_type_error {
   border-bottom: 1px solid #ff0000;

@@ -20,19 +20,26 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Avatar"
+              class="profile__image"
+            />
+            <button
+              type=" button"
+              class="profile__avatar-button"
+              id="avatar-edit-button"
+            ></button>
+          </div>
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               type="button"
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <h2 class="profile__description">Explorer</h2>
+            <h2 class="profile__description"></h2>
           </div>
           <button
             type="button"
@@ -49,6 +56,7 @@
                 <div class="card__description">
                   <h2 class="card__title"></h2>
                   <button type="button" class="card__like-button"></button>
+                  <span class="card__like-amount">0</span>
                 </div>
               </li>
             </template>
@@ -59,6 +67,7 @@
         <p class="footer__copyright">&copy; 2023 Around The U.S</p>
       </footer>
     </div>
+    <!------------------------------------------Edit profile ------------------------>
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -97,6 +106,7 @@
         </form>
       </div>
     </div>
+    <!------------------------------Add card modal ----------------------->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button
@@ -130,6 +140,54 @@
         </form>
       </div>
     </div>
+    <!-------------------------Delete modal -------------------------------->
+    <div class="modal" id="delete-confirmation-modal">
+      <div class="modal__container modal__container_delete">
+        <button
+          type="button"
+          class="modal__close"
+          id="delete-card-close-button"
+        ></button>
+        <h2 class="modal__title">Are you sure?</h2>
+        <form class="modal__form" id="delete-form">
+          <button type="submit" class="modal__button modal__button_delete">
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+    <!------------------------------Change profile image ----------------->
+    <div class="modal" id="profile-change-image">
+      <div class="modal__container modal__container_change_image">
+        <button
+          type="button"
+          class="modal__close"
+          id="change-picture-close-button"
+        ></button>
+        <h2 class="modal__title">Change profile picture</h2>
+        <form class="modal__form" id="profile-change-form">
+          <input
+            class="modal__input"
+            id="profile-image-link"
+            type="url"
+            name="link"
+            placeholder="image link"
+            required
+          />
+          <span class="modal__error" id="profile-image-link-error"
+            >Please enter a link</span
+          >
+          <button
+            type="submit"
+            class="modal__button modal__button_change_image"
+            id="profle-change-button"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!------------------------modal preview ----------------------------------->
     <div class="modal modal_type_preview">
       <div class="modal__container modal__container_type_preview">
         <button
